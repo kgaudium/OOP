@@ -8,9 +8,9 @@ using System.Windows.Forms;
 
 namespace StudentList
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             BirthDatePicker.Value = DateTime.Now - new TimeSpan(5110, 0, 0, 0); 
