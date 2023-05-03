@@ -43,12 +43,11 @@
             this.PhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.PhotoButton = new System.Windows.Forms.Button();
             this.PhotoFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.GroupUpDown = new System.Windows.Forms.NumericUpDown();
             this.StudentListBox = new System.Windows.Forms.ListBox();
             this.SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.GroupTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // AddButton
@@ -167,14 +166,6 @@
             this.PhotoButton.UseVisualStyleBackColor = true;
             this.PhotoButton.Click += new System.EventHandler(this.PhotoButton_Click);
             // 
-            // GroupUpDown
-            // 
-            this.GroupUpDown.Location = new System.Drawing.Point(16, 198);
-            this.GroupUpDown.Maximum = new decimal(new int[] { 6000, 0, 0, 0 });
-            this.GroupUpDown.Name = "GroupUpDown";
-            this.GroupUpDown.Size = new System.Drawing.Size(200, 20);
-            this.GroupUpDown.TabIndex = 16;
-            // 
             // StudentListBox
             // 
             this.StudentListBox.FormattingEnabled = true;
@@ -188,13 +179,22 @@
             // 
             this.SaveFileDialog.FileName = "students.dat";
             // 
-            // Form1
+            // GroupTextBox
+            // 
+            this.GroupTextBox.Location = new System.Drawing.Point(16, 198);
+            this.GroupTextBox.MaxLength = 4;
+            this.GroupTextBox.Name = "GroupTextBox";
+            this.GroupTextBox.Size = new System.Drawing.Size(200, 20);
+            this.GroupTextBox.TabIndex = 18;
+            this.GroupTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.GroupTextBox_KeyPress);
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(487, 507);
+            this.Controls.Add(this.GroupTextBox);
             this.Controls.Add(this.StudentListBox);
-            this.Controls.Add(this.GroupUpDown);
             this.Controls.Add(this.PhotoButton);
             this.Controls.Add(this.PhotoPictureBox);
             this.Controls.Add(this.PhotoLabel);
@@ -214,18 +214,17 @@
             this.Name = "MainForm";
             this.Text = "Student List";
             ((System.ComponentModel.ISupportInitialize)(this.PhotoPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.GroupUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.TextBox GroupTextBox;
 
         private System.Windows.Forms.OpenFileDialog OpenFileDialog;
 
         private System.Windows.Forms.SaveFileDialog SaveFileDialog;
         
         private System.Windows.Forms.ListBox StudentListBox;
-
-        private System.Windows.Forms.NumericUpDown GroupUpDown;
 
         #endregion
 

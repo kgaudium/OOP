@@ -19,7 +19,7 @@ namespace StudentList
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            Student newStudent = new Student(NameTextBox.Text, AddressTextBox.Text, (int)GroupUpDown.Value, (Bitmap)PhotoPictureBox.Image, BirthDatePicker.Value);
+            Student newStudent = new Student(NameTextBox.Text, AddressTextBox.Text, Int32.Parse(GroupTextBox.Text), (Bitmap)PhotoPictureBox.Image, BirthDatePicker.Value);
             
             AppController.StudentsList.Add(newStudent);
             
@@ -43,7 +43,7 @@ namespace StudentList
             NameTextBox.Text = student.Name;
             AddressTextBox.Text = student.Address;
             BirthDatePicker.Value = student.BirthDate;
-            GroupUpDown.Value = student.Group;
+            GroupTextBox.Text = student.Group.ToString();
             PhotoPictureBox.Image = student.Photo;
         }
 
@@ -73,7 +73,7 @@ namespace StudentList
                 {
                     AppController.StudentsList = (List<Student>)formatter.Deserialize(fs);
                 }
-                catch (SerializationException exception)
+                catch (SerializationException)
                 {
                     MessageBox.Show("Файл поврежден или не поддерживается!", "Ошибка файла", MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
@@ -99,6 +99,14 @@ namespace StudentList
                 MessageBox.Show("Возраст должен находиться в пределах от 14 до 65 лет!", "Некорректный возраст", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 BirthDatePicker.Value = DateTime.Now - new TimeSpan(5110, 0, 0, 0); 
+            }
+        }
+
+        private void GroupTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
     }
